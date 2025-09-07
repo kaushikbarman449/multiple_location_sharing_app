@@ -20,12 +20,9 @@ export default function App({ roomId }) {
     // if no stored name, save it for future visits
     if (!storedName) localStorage.setItem("userName", entered);
 
-    // build websocket url
-    const host = window.location.hostname || "localhost";
-    const port = 8000;
+    // build websocket url (quick: point to Render backend)
     const room = roomId || window.location.pathname.split("/").pop();
-    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const wsUrl = `${protocol}://${host}:${port}/join-room/${room}`;
+    const wsUrl = `wss://multiple-location-sharing-app.onrender.com/join-room/${room}`;
 
     const socket = new WebSocket(wsUrl);
 
