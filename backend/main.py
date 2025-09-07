@@ -2,6 +2,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict
 import uvicorn
+import os
 
 app = FastAPI()
 
@@ -68,4 +69,5 @@ async def join_room(websocket: WebSocket, room_id: str):
             del rooms[room_id]  # Clean up empty room
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)

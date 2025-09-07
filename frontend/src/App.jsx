@@ -95,7 +95,7 @@ export default function App({ roomId }) {
   }, [ws, name]);
 
   return (
-    <Suspense fallback={<div style={{ height: "100vh" }} /> }>
+    <Suspense fallback={<div style={{ height: "100vh" }} />}>
       <MapInner users={users} position={position} />
     </Suspense>
   );
